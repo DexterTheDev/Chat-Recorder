@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% render 'partials/header.liquid', client: client, user: user %}
+</head>
+
+<body class="bg-primary-100 font-body">
+    {% render 'partials/navbar.liquid', client: client, user: user %} 
+    {% if status == 404 %}
+    <div class="container mx-auto flex md:m-auto md:w-6/12 md:mt-64">
+        <div class="mt-20 text-center lg:text-left mx-auto lg:mx-0">
+            <h1 class="font-bold text-white text-6xl justify-content">{{ status }} ERROR</h1>
+            <p class="font-semibold text-xl text-gray-200">PAGE NOT FOUND</p>
+            <div class="mt-3">
+                <a href="/" class="ease-out duration-300 font-semibold text-xl text-primary-600 hover:text-gray-300 justify-content">Go back home&nbsp;<i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <div class="hidden lg:block ml-auto">
+            <img class="mt-auto w-72 h-72" src="/public/imgs/crwbg.png">
+        </div>
+    </div>
+    {% else %}
+    <div class="mb-72 md:mt-0 md:px-0 mt-20 px-2">
+        <div class="p-6 bg-primary-200 rounded-lg md:m-auto md:w-6/12 md:mt-96">
+            <h1 class="flex font-bold text-white text-2xl justify-content">{{ status }} ERROR</h1>
+            <div class="p-6 bg-primary-300 rounded-lg border-2 border-gray-500">
+                <code class="text-sm text-semibold text-gray-500 mt-2">Error has been automatically sent to the development team!</code>
+            </div>
+            <div class="mt-3">
+                <a href="/" class="ease-out duration-300 font-semibold text-xl text-white hover:text-gray-300 justify-content">Go back home&nbsp;<i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <footer>
+        <script src="/public/scripts/tailwind.config.js"></script>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% render 'partials/header.liquid', client: client, user: user %}
+</head>
+
+<body class="bg-primary-100 font-body">
+    {% render 'partials/navbar.liquid', client: client, user: user %}
+    <div class="w-10/12 md:ml-auto lg:ml-auto ml-5 w-full">
+        {% for u in msgs %}
+        <div class="py-3 flex mb-1 text-sm w-auto mr-auto">
+            <img src="{{ u.avatar }}" class="cursor-pointer w-10 h-10 rounded-3xl mr-3">
+            <div class="flex-1 overflow-hidden">
+                <div>
+                    <a target="_blank" href="https://discord.com/users/{{ u.author.id }}" class="font-bold text-base text-white cursor-pointer hover:text-gray-400 ease-out duration-300">{{ u.author.username }}</a>
+                    <span class="font-bold text-gray-400 text-xs">{{ u.dateNow }}</span>
+                </div>
+                <p class="text-white leading-normal break-words">{{ u.content }}</p>
+                {% if u.media == "video" %}
+                    <a href="{{ u.attachment }}" target="_blank" class="ease-out duration-300 font-semibold text-base text-primary-600 hover:text-primary-500 justify-content">Video Attached&nbsp;<i class="fas fa-file-video"></i></a>
+                {% elsif u.media == "music" %}
+                    <a href="{{ u.attachment }}" target="_blank" class="ease-out duration-300 font-semibold text-base text-primary-600 hover:text-primary-500 justify-content">Music Attached&nbsp;<i class="fas fa-music"></i></a>
+                {% elsif u.attachment %} 
+                    <img class="w-auto h-44 rounded-sm" src="{{ u.attachment }}" /> 
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <p class="text-white text-center text-2xl mt-5 font-bold">No messages</p>
+        {% endfor %}
+    </div>
+    <footer>
+        {% render 'partials/footer.liquid' %}
+    </footer>
+</body>
+
+</html>

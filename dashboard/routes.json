@@ -1,0 +1,8 @@
+[
+  "./routes/route[get]/index.js",
+  "./routes/route[get]/auth/oauth2.js",
+  "./routes/route[get]/dynamic/record.js",
+  "./routes/route[get]/dynamic/support.js",
+  "./routes/route[get]/dynamic/privacy.js",
+  "./routes/route[get]/dynamic/profile.js"
+]

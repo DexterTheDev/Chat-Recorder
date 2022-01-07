@@ -1,0 +1,26 @@
+{
+  "name": "chatrecorder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "discord.js": "^13.3.1",
+    "fastify": "^3.25.3",
+    "fastify-oauth2": "^4.4.0",
+    "fastify-secure-session": "^3.0.0",
+    "fastify-static": "^4.5.0",
+    "fs": "^0.0.1-security",
+    "liquidjs": "^9.32.0",
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.14",
+    "path": "^0.12.7",
+    "point-of-view": "^5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
+  },
+  "author": "Dexter",
+  "license": "MIT"
+}
