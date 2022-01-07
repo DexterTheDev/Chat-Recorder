@@ -15,8 +15,10 @@ const index = async(fastify, options, done) => {
                     await record.messages.map(async msg => {
                         msg.avatar = (await req.client.users.fetch(msg.author.id).catch(() => {})).displayAvatarURL();
                         msg.dateNow = moment(msg.date).format('DD/MM/YY hh:mm A');
-                        msg.content = msg.content.split("<@")[1] ? msg.content.replace(`<@${msg.content.split("<@")[1]?.split(">")[0]}>`, `<a target="_blank" href="https://discord.com/users/${msg.content.split("<@")[1]?.split(">")[0]}" class="bg-blurple-200 text-blurple-300 rounded px-1 hover:underline">@${(await req.client.users.fetch(msg.content.split("<@")[1]?.split(">")[0]).catch(() => {})).username}</a>`) : msg.content;
                         msg.media = msg.attachment?.endsWith(".mp4") ? "video" : msg.attachment?.endsWith(".mp3") ? "music" : "attach"
+
+                        let mention = msg.content.split("<@!")[1] || msg.content.split("<@")[1];
+                        msg.content = mention ? msg.content?.replace(`<@${msg.content.split("<@!")[1] ? "!" : ""}${mention?.split(">")[0]}>`, `<a target="_blank" href="https://discord.com/users/${mention?.split(">")[0]}" class="bg-blurple-200 text-blurple-300 rounded px-1 hover:underline">@${(await req.client.users.fetch(mention?.split(">")[0]).catch(() => {}))?.username ?? "Null"}</a>`) : msg.content;
                     })
                     req.render("./dynamic/records.liquid", { msgs: await record.messages })
                 }

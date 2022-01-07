@@ -4,7 +4,7 @@ module.exports = {
     port: 3000,
     clientID: "927231576427880538",
     clientSecret: "hJJLdBACW-mv9al2Fr4Kmz-fiQ8J4p2-",
-    domain: "http://localhost:3000",
+    domain: "https://chatrecorder.xyz",
     logs: "928260351638798376",
     support: "https://discord.gg/KjQvZPWxpb"
 }
